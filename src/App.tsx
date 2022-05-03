@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <div className="reservation-container">
+          <div>
+            <h5 className="reservation-header">Reservations</h5>
+            <div className="reservation-cards-container">
+              <div className="reservation-card-container">Niloy Sikdar</div>
+            </div>
+          </div>
+          <div className="reservation-input-container">
+            <input />
+            <button>Add</button>
+          </div>
+        </div>
+        <div className="customer-food-container">
+          <div className="customer-food-card-container">
+            <p>Hello World</p>
+            <div className="customer-foods-container">
+              <div className="customer-food"></div>
+              <div className="customer-food-input-container">
+                <input />
+                <button>Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
