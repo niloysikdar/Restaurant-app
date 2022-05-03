@@ -2,8 +2,9 @@ import { useRef, MutableRefObject } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "./app/store";
 import { addReservation } from "./features/reservationSlice";
-import ReservationCard from "./components/ReservationCard";
 
+import ReservationCard from "./components/ReservationCard";
+import AllCustomers from "./components/AllCustomers";
 import "./App.css";
 
 function App() {
@@ -39,16 +40,7 @@ function App() {
           </div>
         </div>
         <div className="customer-food-container">
-          <div className="customer-food-card-container">
-            <p>Hello World</p>
-            <div className="customer-foods-container">
-              <div className="customer-food"></div>
-              <div className="customer-food-input-container">
-                <input />
-                <button>Add</button>
-              </div>
-            </div>
-          </div>
+          <AllCustomers />
         </div>
       </div>
     </div>

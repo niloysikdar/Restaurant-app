@@ -1,4 +1,6 @@
 import { useDispatch } from "react-redux";
+import { nanoid } from "nanoid";
+import { addCustomer } from "../features/customerSlice";
 import { removeReservation } from "../features/reservationSlice";
 
 interface ReservationCardTypes {
@@ -11,7 +13,15 @@ const ReservationCard = ({ name, index }: ReservationCardTypes) => {
 
   const handleRemove = () => {
     dispatch(removeReservation(index));
+    dispatch(
+      addCustomer({
+        id: nanoid(),
+        name: name,
+        foods: [],
+      })
+    );
   };
+
   return (
     <div className="reservation-card-container" onClick={handleRemove}>
       {name}
