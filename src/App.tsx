@@ -1,6 +1,26 @@
+import { useRef, MutableRefObject } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./app/store";
+import { addReservation } from "./features/reservationSlice";
+import ReservationCard from "./components/ReservationCard";
+
 import "./App.css";
 
 function App() {
+  const reservationNameRef = useRef() as MutableRefObject<HTMLInputElement>;
+  const dispatch = useDispatch();
+
+  const allReservations = useSelector(
+    (state: RootState) => state.reservations.value
+  );
+
+  const handleAddReservation = () => {
+    if (reservationNameRef.current.value) {
+      dispatch(addReservation(reservationNameRef.current.value));
+      reservationNameRef.current.value = "";
+    }
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -8,12 +28,14 @@ function App() {
           <div>
             <h5 className="reservation-header">Reservations</h5>
             <div className="reservation-cards-container">
-              <div className="reservation-card-container">Niloy Sikdar</div>
+              {allReservations.map((val, i) => (
+                <ReservationCard key={i} name={val} index={i} />
+              ))}
             </div>
           </div>
           <div className="reservation-input-container">
-            <input />
-            <button>Add</button>
+            <input ref={reservationNameRef} type="text" />
+            <button onClick={handleAddReservation}>Add</button>
           </div>
         </div>
         <div className="customer-food-container">
